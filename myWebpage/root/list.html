@@ -1,0 +1,101 @@
+﻿<? session_start();?>
+<link rel="stylesheet" href="../style.css">
+<?php
+  include("$_SERVER[DOCUMENT_ROOT]/lib/dbconn.php");
+
+   $scale=10;                          // 한 화면에 표시되는 글의 개수
+   $table = "root";
+ 
+   $sql="select * from root order by num desc";
+   $result=mysql_query($sql, $connect);
+
+   $total_record=mysql_num_rows($result);
+ 
+   // 전체 페이지 수($total_page) 계산
+   if($total_record % $scale==0) 
+     $total_page=floor($total_record/$scale); 
+   else
+     $total_page = floor($total_record/$scale) + 1; 
+
+   if(!$page)                          // 현재 화면에 표시되는 페이지를 의미하는
+     $page=1;                          //  $page가 0이라면 1로 초기화
+ 
+
+   // 표시할 페이지($page)에 따라 $start 계산
+   $start=($page - 1) * $scale; 
+
+   $number=$total_record - $start;
+  // 글 목록 출력	
+           for($i=$start; $i<$start+$scale && $i<$total_record; $i++)
+           {
+             // 가져올 레코드로 위치(포인터) 이동
+             mysql_data_seek($result, $i); 
+
+   
+
+                 // 하나의 레코드 가져오기
+             $row = mysql_fetch_array($result); 
+ 
+             $item_num=$row[num];
+             $item_rep=$row[rep];
+             $item_date=$row[regist_day];
+             $item_date=substr($item_date, 0, 10); 
+             $item_subject=str_replace(" ", "&nbsp;", $row[subject]);
+             $image_copied[1] = $row[file_copied_1];
+             $img_name=$image_copied[1];
+        if($img_name!=null)
+             $img_name="./data/" .$img_name;
+        else
+            $img_name ="./data/noimage.jpg";
+
+                 $image_copied[0] = $row[file_copied_0];
+             $img_name2=$image_copied[0];
+        if($img_name2!=null)
+             $img_name2="./data/" .$img_name2;
+        else
+            $img_name2 ="./data/noimage.jpg";
+
+            
+   
+?>
+
+<div class="fixed_img_col">
+
+    <ul>
+        <li>
+            <a href="./contents.html?table=<?= $table ?>&num=<?= $item_num ?>" target="view">
+            
+                <div class="thumb">
+                    <img src='<?= $img_name?>'>
+                </div>
+             
+                <div class="title">
+					<?= $item_subject ?>
+					<span class="cnt"><?= $item_rep?></span>
+					</div>
+			</a>
+				<div class="date"><?= $item_date ?></div>   
+             <?php
+   if($userid=='admin')
+   {
+?>
+        <div class="admin_delete">
+            <a href="./delete.php?table=<?=$table?>&num=<?= $item_num ?>">delete</a>  |
+            <a href = "./write.html?table=<?=$table?>&mode=modify&num=<?= $item_num ?>&page=<?=$page?>">modify</a>
+         </div>
+    <?
+       }
+?>
+		</li>
+
+           
+    </ul>
+    <div class="img_root">
+                    <img src='<?= $img_name2?>'>
+    </div>
+
+</div>
+
+    <?php
+      }
+    ?> 

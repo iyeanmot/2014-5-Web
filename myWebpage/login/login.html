@@ -1,0 +1,23 @@
+<!--<style>
+BODY,TD,input,DIV,form,TEXTAREA,center,option,pre,blockquote{font-size:9pt; font-family:tahoma;color:#807F7F}
+
+</style>-->
+<table class ="login">
+  <form name="loginform" id="loginform" method="post" action="../login/login.php">
+    <input type=hidden name=s_url value="[s_url]">
+    <tr> 
+      <td><img src=./image/id.gif></td>
+      <td> <input type=text name=id size="20" style="border-width:0px; border-color:rgb(196,196,196); border-style:solid;" required></td>
+      <td width="20">&nbsp;</td>
+      </tr>
+      <tr height ="20"></tr>
+      <tr>
+      <td><img src=./image/pass.gif></td>
+      <td> <input type=password name=pass value='' size="20" style="border-width:0px; border-color:rgb(196,196,196); border-style:solid;" required></td>
+          <td width="20">&nbsp;</td>
+      <td><input type=checkbox name=auto_login value=1 onclick=check_autologin()></td>
+      <td><input type="image" src="./image/i_login.gif" value="a" name="login_button"></td>
+      <td>&nbsp;</td>
+    </tr>
+  </form>
+</table>

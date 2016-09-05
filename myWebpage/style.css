@@ -1,0 +1,780 @@
+﻿@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration: none;
+}
+
+/* STYLE */
+
+* {
+	font-family: 'Nanum Gothic', dotum, serif;
+	font-size: 12px;
+	color: #111;
+}
+
+body {
+	font-family: 'Nanum Gothic', dotum, serif;
+	font-size: 12px;
+	color: #111;
+}
+
+.container {
+	width: 980px;
+	height :100%;
+	margin: 0 auto;
+}
+.container img{
+	width: 100%;
+    padding-top: 50px;
+	margin: 0 auto;
+}
+
+.header
+{
+	text-align: center;
+	letter-spacing: 5px;
+}
+
+.container .contents
+{
+	width: 100%;
+	height: 950px;
+	margin-top :50px;
+}
+
+.container .admin_write
+{
+	margin-top:25px;
+	position : absolute;
+	margin-left : 850px;
+}
+.container .admin_write a{
+		display:inline;
+		color: #ccc;
+		letter-spacing: 3px;
+	}
+/* profile */
+
+.header .profile {
+	position: relative;
+	margin-top: 30px;
+	padding: 10px;
+	height: 180px;
+}
+
+	.profile img {
+		height: 100%;
+	}
+	
+	.profile .notice {
+		position: absolute;
+		display: inline-block;
+		margin-left: 10px;
+		width: 175px;
+		height: 180px;
+		overflow: hidden;
+		letter-spacing: 0;
+		text-align: left;
+	}
+	
+		.profile .notice ul {
+			height: 100%;
+		}
+	
+		.profile .notice li {
+			padding: 5px 0;
+		}
+		
+		.profile .notice li a {
+			color: #ccc;
+		}
+		
+/* search */
+
+.header .search {
+	height: 50px;
+	line-height: 50px;
+}
+
+	.search span {
+		font-weight: bold;
+		color: #ffc0d4;
+	}
+
+	.search input[type="text"] {
+		padding: 5px;
+		width: 150px;
+		border: 1px solid #eee;
+		border-radius: 5px;
+	}
+	
+/* menu */
+
+.header .menu {
+	height: 30px;
+	line-height: 30px;
+}
+
+	.menu ul {
+		display: inline-block;
+	}
+	
+	.menu li {
+		display: inline-block;
+		margin: 0 10px;
+		float: left;
+	}
+	
+	.menu li a:hover {
+		background-color: #ffc0d4;
+		color: #fff;
+	}
+	
+/* category */
+
+.header .category {
+	padding: 15px 0 30px;
+	text-align: center;
+	border-bottom: 1px dashed #111;
+}
+	.category .c_cnt {
+		font-weight: normal;
+		letter-spacing: 0;
+		color: #eee;
+	}
+
+	.category ul {
+		display: inline;
+	}
+	
+	.category li {
+		display: inline;
+	}
+	
+	.category ul li a {
+		display: block;
+		height: 30px;
+		line-height: 30px;
+		font-weight: bold;
+		color: #ffc0d4;
+	}
+	
+	.category ul li li a {
+		display: inline;
+		margin: 0 5px;
+		font-weight: normal;
+		color: #111;
+		letter-spacing: 0;
+	}
+	
+	.category ul li li li a {
+		color: #ccc;
+	}
+
+/* footer */
+
+.footer {
+	padding: 20px 0;
+	line-height: 20px;
+	text-align: center;
+	letter-spacing: 5px;
+}
+
+	.footer span {
+		color: #ccc;
+	}
+
+	.footer .counter {
+		color: #ccc;
+	}
+	
+	.footer .counter span {
+		letter-spacing: 0px;
+		color: #111;
+	}
+
+.searchList {
+}
+
+.searchRpList {
+	margin-top: 50px;
+}
+
+/* search list */
+
+.searchList .searchListTitle, .searchRpList .searchRpListTitle {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.fixed_img_col
+{
+	width: 240px;
+	display:inline;
+}
+.fixed_img_col .img_root
+{
+	display:inline;
+}
+.fixed_img_col .img_root img
+{
+	width :50px;
+	transition-property:width;
+	transition-duration:0.5s;
+}
+.fixed_img_col .img_root img:hover
+{
+	width:400px;
+}
+	.fixed_img_col .admin_delete {
+		display:inline;
+		float :right;
+	}
+
+		.fixed_img_col .admin_delete a{
+		display:inline;
+		color: #ccc;
+		letter-spacing: 3px;
+	}
+	
+.fixed_img_col ul {
+	overflow: hidden;
+	width: 240px;
+	display:inline-block;
+}
+
+
+.fixed_img_col li {
+	float: left;
+	margin: 10px;
+	width: 220px;
+	height: 280px;
+}
+
+	.fixed_img_col li a {
+		display: block;
+		cursor: pointer;
+	}
+
+		.fixed_img_col li a .thumb img {
+			width: 100%;
+			height: 220px;
+			border-radius: 110px;
+			padding-top: 0px;
+		}
+		
+		.fixed_img_col li a .thumb img:hover {
+			
+		}
+			
+		.fixed_img_col li a .title {
+			height: 30px;
+			line-height: 40px;
+			overflow: hidden;
+		}
+		
+			.fixed_img_col li a .title .cnt {
+				color: #ffc0d4;
+			}
+	
+	.fixed_img_col li .date {
+		height: 20px;
+		line-height: 20px;
+		color: #ccc;
+	}
+
+.guest {
+}
+
+/* guest write */
+
+.guest .guestWrite table {
+	width: 300px;
+	margin: 40px auto;
+	letter-spacing: 3px;
+}
+
+	.guest .guestWrite tr {
+		height: 40px;
+	}
+
+	.guest .guestWrite th {
+		vertical-align: middle;
+	}
+
+	.guest .guestWrite td {
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	.guest .guestWrite .secret {
+		text-align: right;
+	}
+
+		.guest .guestWrite td input[type="text"],
+		.guest .guestWrite td input[type="password"] {
+			width: 180px;
+			padding: 5px;
+			border: 1px solid #eee;
+			border-radius: 5px;
+		}
+
+		.guest .guestWrite td textarea {
+			margin: 10px 0;
+			width: 300px;
+			height: 70px;
+			resize: none;
+			padding: 5px;
+			border: 1px solid #eee;
+			border-radius: 5px;
+		}
+
+		.guest .guestWrite td input[type="submit"] {
+			padding: 10px;
+			width: 100px;
+			background-color: #eee;
+			border: 0 none;
+			cursor: pointer;
+			letter-spacing: 3px;
+		}
+
+/* guest list */
+
+.guest .guestList {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.guest .guestList li {
+	margin: 10px 0 20px;
+	padding: 10px;
+	border: 1px solid #eee;
+	border-radius: 5px;
+}
+
+	.guest .guestList li .name a {
+		color: #ffc0d4;
+		font-weight: bold;
+	} 
+	.guest .guestList li .date {
+		color: #ccc;
+	} 
+
+	.guest .guestList li .control {
+		margin-left: 10px;
+		letter-spacing: 3px;
+	}
+	
+	.guest .guestList li p {
+		margin: 10px 0;
+		line-height: 22px;
+	}
+
+		.guest .guestList li ul li {
+			margin: 0;
+			margin-left: 10px;
+			border: 0 none;
+		} 
+		
+		.guest .guestList li ul li p {
+			margin: 0;
+			margin-top: 10px;
+		} 
+		
+/* entry notice */
+		
+.entryNotice {
+	margin: 30px 0;
+	text-align: center;
+}
+		
+.entryNoticeTitle {
+	line-height: 20px;
+}
+
+	.entryNoticeTitle .title a {
+		font-size: 13px;
+		font-weight: bold;
+	}
+	
+	.entryNoticeTitle .date {
+		color: #ccc;
+	}
+	
+.entryNotice .article {
+	padding: 30px 0;
+	text-align: center;
+	font-size: 13px;
+	line-height: 22px;
+	
+}
+
+/* entry protected */
+
+.entryProtected {
+	margin: 30px 0;
+	text-align: center;
+}
+		
+	.entryProtected .title a {
+		font-weight: bold;
+		font-size: 13px;
+	}
+	
+	.entryProtected .date {
+		color: #ccc;
+	}
+	
+	.entryProtected input[type="password"] {
+		padding: 5px;
+		border: 1px solid #eee;
+		border-radius: 5px;
+	}
+	
+	.entryProtected input[type="button"] {
+		margin-left: 5px;
+		background-color: #fff;
+		color: #ccc;
+		border: 0 none;
+		cursor: pointer;
+		letter-spacing: 3px;
+	}
+	
+	.entryProtected p {
+		padding: 30px 0;
+		line-height: 22px;
+	}
+	
+		.entryProtected p span {
+			display: block;
+			margin-bottom: 20px;
+			font-style: italic;
+		}
+		
+/* entry */
+
+.entry {
+	margin: 30px 0;
+}
+		
+.entryTitle {
+	line-height: 20px;
+	text-align: center;
+}
+
+	.entryTitle .title {
+		font-weight: bold;
+		font-size: 13px;
+	}
+	
+	.entryTitle .category a {
+		color: #ffc0d4;
+	}
+	
+	.entryTitle .date {
+		color: #ccc;
+	}
+	
+	.entryTitle .admin {
+		color: #ccc;
+		letter-spacing: 3px;
+	}
+	
+		.entryTitle .admin a {
+			letter-spacing: 0;
+		}
+
+.entryArticle {
+	padding: 30px 0;
+	text-align: center;
+	font-size: 13px;
+	line-height: 22px;
+}
+
+.entryArticle .another_category {
+	display: none;
+}
+
+/* tag */
+
+.entryTag {
+	height: 30px;
+	line-height: 30px;
+	letter-spacing: 3px;
+}
+
+	.entryTag a {
+		color: #ccc;
+		letter-spacing: 0;
+	}
+
+/* trackback, reply */
+
+.entryActionTrail {
+	text-align: right;
+	height: 30px;
+	line-height: 30px;
+	color: #ccc;
+	letter-spacing: 3px;
+}
+
+	.entryActionTrail .cnt {
+		color: #ffc0d4;
+	}
+	
+/* trackback */
+	
+.entryTrackback {
+	height: 20px;
+	line-height: 20px;
+	text-align: right;
+}
+
+	.entryTrackback span {
+		color: #ccc;
+	}
+	
+.entryReply {
+	margin-top: 20px;
+	border-top: 1px dashed #111;
+}
+
+/* reply list */
+
+.entryReply .replyList li {
+	margin: 10px 0;
+	padding: 10px 20px 0;
+}
+
+	.entryReply .replyList .name a {
+		font-weight: bold;
+		color: #ffc0d4;
+	}
+	
+	.entryReply .replyList .date {
+		color: #ccc;
+	}
+	
+	.entryReply .replyList .control {
+		margin-left: 5px;
+		letter-spacing: 3px;
+	}
+
+	.entryReply .replyList li p {
+		margin-top: 10px;
+		line-height: 22px;
+	}
+	
+/* reply write */	
+	
+.entryReply .replyWrite table {
+	width: 300px;
+	margin: 50px auto 20px;
+	letter-spacing: 3px;
+}
+
+	.entryReply .replyWrite tr {
+		height: 40px;
+	}
+
+	.entryReply .replyWrite th {
+		vertical-align: middle;
+	}
+
+	.entryReply .replyWrite td {
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	.entryReply .replyWrite .secret {
+		text-align: right;
+	}
+
+		.entryReply .replyWrite td input[type="text"],
+		.entryReply .replyWrite td input[type="password"] {
+			width: 180px;
+			padding: 5px;
+			border: 1px solid #eee;
+			border-radius: 5px;
+		}
+
+		.entryReply .replyWrite td textarea {
+			margin: 10px 0;
+			width: 300px;
+			height: 70px;
+			resize: none;
+			padding: 5px;
+			border: 1px solid #eee;
+			border-radius: 5px;
+		}
+
+		.entryReply .replyWrite td input[type="submit"] {
+			padding: 10px;
+			width: 100px;
+			background-color: #eee;
+			border: 0 none;
+			cursor: pointer;
+			letter-spacing: 3px;
+		}
+
+/* page */
+
+.page {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.page a {
+	color: #ccc;
+	letter-spacing: 5px;
+}
+
+	.page .numbox a {
+		display: inline-block;
+		padding: 0 7px;
+		color: #111;
+		letter-spacing: 0;
+	}
+	
+	.page .numbox .selected {
+		color: #ffc0d4;
+		font-weight: bold;
+	}
+
+	/* login */
+.login
+{
+	margin: 0 auto;
+	padding-bottom : 50px;
+}
+
+	/* entrywrite */
+
+	.entryWrite {
+		width: 930px;
+	margin: 30px auto;
+}
+		
+.entryWriterTitle {
+	line-height: 20px;
+	text-align: center;
+}
+
+	.entryWriterTitle .Title {
+		font-weight: bold;
+		font-size: 13px;
+	}
+		.entryWriterTitle .TitleInput{
+		width : 500px;
+	}
+.entryArticleWrite
+{
+	padding-top : 50px;
+	line-height: 20px;
+	text-align: center;
+}
+.entryArticleWrite textarea
+{
+	width : 100%;
+	height :500px;
+}
+	.entryArticleWrite .TagWrite
+	{
+		width : 250px;
+		height:20px;
+		display :block;
+	}
+
+	.entryArticleWrite span
+	{
+		font-weight: bold;
+		font-size: 13px;
+		text-align:left;
+	}
+	.entryArticleWrite .entryFile
+	{
+		padding-top : 25px;
+		display :inline-block;
+	}
+
+		.entryArticleWrite .write_button
+	{
+		padding-top : 25px;
+		display :inline-block;
+	}
+
+	/*.entryTitle .category a {
+		color: #ffc0d4;
+	}
+	
+	.entryTitle .date {
+		color: #ccc;
+	}
+	
+	.entryTitle .admin {
+		color: #ccc;
+		letter-spacing: 3px;
+	}
+	
+		.entryTitle .admin a {
+			letter-spacing: 0;
+		}
+
+.entryArticle {
+	padding: 30px 0;
+	text-align: center;
+	font-size: 13px;
+	line-height: 22px;
+}
+
+.entryArticle .another_category {
+	display: none;
+}*/

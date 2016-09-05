@@ -1,0 +1,90 @@
+﻿<?session_start();?>
+<div class="entryReply"> 
+ <?php
+      $num = $item_num;
+      $sql="select * from root_reply where parent='$num'";
+      $reply_result=mysql_query($sql);
+
+      	 while ($row_reply=mysql_fetch_array($reply_result))
+	 {
+		 $reply_num=$row_reply[num];
+		 $reply_id=$row_reply[id];
+		 $reply_content=str_replace("\n", "<br>", $row_reply[content]);
+		 $reply_content=str_replace(" ", "&nbsp;", $reply_content);
+		 $reply_date=$row_reply[regist_day];
+  ?>
+
+	<div class="replyList">
+		<s_rp_container>
+		<ul>
+			<s_rp_rep>
+			<li id='[##_rp_rep_id_##]'>
+				<div class="[##_rp_rep_class_##]">
+					<span class="name"><?= $reply_id?></span>
+					<span class="date"> <?= $reply_date?></span>
+                    <?php
+                       if($userid=='admin')
+                       {
+                    ?>
+					<span class="control">
+						<!--<a href="#" class="modify">&nbsp;<span>modify</span></a>-->
+						<a href="./delete_reply.php?replynum=<?= $reply_num ?>&num=<?=$item_num?>" class="write">&nbsp;<span>delete</span></a>
+					</span>
+                    <?
+                       }
+                    ?>
+					<p><?= $reply_content?></p>
+				</div>
+			</li>
+			</s_rp_rep>
+		</ul>
+		</s_rp_container>
+	</div>
+ <?
+ } // while문 종료
+ ?>
+	<!-- reply list close -->
+	<s_rp_input_form>
+
+	<div class="replyWrite">
+         <form name="replyform" method="post" action="insert_reply.php?num= <?= $item_num ?> ">
+		<table>
+			<colgroup>
+				<col width="120px"/>
+				<col width="*"/>
+			</colgroup>
+			<s_rp_member>
+			<s_rp_guest>
+			<tr>
+				<th>name</th>
+				<td><input type="text" name="reply_name"/></td>
+			</tr>
+			<tr>
+				<th>password</th>
+				<td><input type="password" maxlength="8" name="reply_password"/></td>
+			</tr>
+			</s_rp_guest>
+			<tr>
+				<td colspan="2" class="secret"><input type="checkbox" name="[##_rp_input_is_secret_##]" class="checkbox" /> secret</td>
+			</tr>
+			</s_rp_member>
+			<tr>
+				<td colspan="2">
+					<textarea name="reply_content" rows="10" cols="50"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<!--<input type="submit" value="submit" onclick="[##_rp_onclick_submit_##]" />-->
+                    <input type="submit" value="submit" />
+				</td>
+			</tr>
+		</table> 
+             </form>
+	</div>
+           
+	</s_rp_input_form>
+	<!-- reply write close -->
+</div>
+</s_rp>
+<!-- reply close -->

@@ -1,0 +1,115 @@
+﻿<? session_start();?>
+<link rel="stylesheet" href="../style.css">
+<?php
+	$num = $_GET['num'];
+	$table = $_GET['table'];
+
+	include "../lib/dbconn.php";
+
+	$sql = "select * from $table where num=$num";
+	$result = mysql_query($sql, $connect);
+
+    $row = mysql_fetch_array($result);       
+	
+	$item_num     = $row[num];
+    $item_tag=$row[tag];
+
+	$image_name[0]   = $row[file_name_0];
+	$image_name[1]   = $row[file_name_1];
+	$image_name[2]   = $row[file_name_2];
+
+
+	$image_copied[0] = $row[file_copied_0];
+	$image_copied[1] = $row[file_copied_1];
+	$image_copied[2] = $row[file_copied_2];
+
+    $item_date    = $row[regist_day];
+	$item_subject = str_replace(" ", "&nbsp;", $row[subject]);
+
+	$item_content = $row[content];
+	$is_html      = $row[is_html];
+    if ($is_html!="y")
+	{
+		$item_content = str_replace(" ", "&nbsp;", $item_content);
+		$item_content = str_replace("\n", "<br>", $item_content);
+	}
+	
+	for ($i=0; $i<3; $i++)
+	{
+		if ($image_copied[$i]) 
+		{
+			$imageinfo = GetImageSize("./data/".$image_copied[$i]);
+
+			$image_width[$i] = $imageinfo[0];
+			$image_height[$i] = $imageinfo[1];
+			$image_type[$i]  = $imageinfo[2];
+
+			if ($image_width[$i] > 785)
+				$image_width[$i] = 785;
+		}
+		else
+		{
+			$image_width[$i] = "";
+			$image_height[$i] = "";
+			$image_type[$i]  = "";
+		}
+	}
+
+	mysql_query($sql, $connect);
+?>
+
+<s_article_rep>
+		<div class="entry">
+			<div class="entryTitle">
+				<div class="title"><a href=""><?= $item_subject ?></a></div>
+				<span class="category">
+					<a href="./list.html"><?= $table?></a>
+				</span> 
+				<span class="date"><?= $item_date ?></span>
+				<s_ad_div>
+                   <?php
+                       if($userid=='admin')
+                       {
+                    ?>
+				<div class="admin">
+					<a href="./write.html?table=<?=$table?>&mode=modify&num=<?= $item_num ?>&page=<?=$page?>">modify</a> | 
+					<a href="./delete.php?table=<?=$table?>&num=<?= $item_num ?>" onclick="[##_s_ad_d_onclick_##]">delete</a>
+				</div>
+                    <?
+                       }
+                    ?>
+				</s_ad_div>
+			</div>
+			<div class="entryArticle"><?= $item_content ?>
+                            <?php
+                for ($i=0; $i<3; $i++){
+                 if ($image_copied[$i]){
+                     $img_name=$image_copied[$i];
+                     $img_name="./data/" .$img_name;
+                     $img_width=$image_width[$i];
+                     $img_height=$image_height[$i];
+                     $brNum = $brNum;
+                ?>
+                    <script>
+                        hegAdd(<?= $img_height ?>, <?= $img_width ?>, <?= $brNum ?>);
+                    </script>
+                <?php
+                     echo ("<br>" ."<img src='$img_name' width='$img_width'>" ."<br>");
+		          }
+	            }
+                    ?>
+			</div>
+			<!-- article close -->
+			<s_tag_label>
+			<div class="entryTag">
+				tag <?= '#'.$item_tag ?>
+			</div>
+			</s_tag_label>
+			<!-- tag close -->
+			
+		</div>
+		</s_article_rep>
+<!-- entry close -->
+
+</div>
+	<!-- contents close -->

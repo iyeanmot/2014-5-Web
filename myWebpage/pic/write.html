@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="../style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<?php include './write_db.php'; ?>
+            <br /><br /><br />
+            <div id="write_box">
+                <br />
+                <?
+                if($mode=="modify"){
+                echo('<form name="board_form" method="post" action="insert.php?mode=modify'.'&num='.$num.'&page='.$page.'&table='.$table.
+                    '" enctype="multipart/form-data">
+                    '); }
+                    else{
+                    echo('<form name="board_form" method="post" action="insert.php?'.'table='.$table.
+                    '" enctype="multipart/form-data">
+                        ');
+                        }
+                        ?>
+                         <div class="entryWrite">
+			<div class="entryWriterTitle">
+                <div class="Title">제목 | 
+                    <input class = "TitleInput" type="text" name="subject" value="<?=$item_subject?>" required></div>
+			</div>
+			<div class="entryArticleWrite">
+                <textarea name="content"><?=$item_content?></textarea>
+                <span>TAG |</span> <input type="text" class="TagWrite" name="tag" value="<?=$item_tag?>">
+
+                        <?
+                        for($i=0;$i<5;$i++)
+                        {
+                        ?>
+  <div class="entryFile">
+            <div class="col1">이미지파일<?=$i+1?></div>
+		    <div class="col2">
+                <input type="file" name="upfile[]">
+            </div>
+	    </div>
+                        <?
+                        if ($mode=="modify" && $item_file[$i])
+                        {
+                        ?>
+                        <div class="delete_ok">
+                            <?=$item_file[$i]?> 파일이 등록되어 있습니다.
+                            <input type="checkbox" name="del_file[]" value="1">삭제
+                        </div>
+                        <div class="clear"></div>
+                        <?php
+                        }
+                        }
+
+                        ?>
+                        <div class="write_button">
+
+                            <button type="submit" class="wrbt_1">OK</button>
+
+                            &nbsp;
+                            <a href="./list.html">
+                                <div class="wrbt_2">CANCLE</div>
+                            </a>
+                        </div>
+                        <!-- end of write_button -->
+                    </form>
+            </div>
+            <!-- end of col2 -->
+    </div>
+    <!-- end of content -->
+
+    </div>

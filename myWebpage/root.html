@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>My Little Journey</title>
+	<link rel="stylesheet" href="./style.css">
+<?php
+ include("./header.html");
+ ?>
+</head>
+<body>
+    <div class="container">
+            <?php
+   if($userid)
+   {
+?>
+        <div class="admin_write">
+            <a href="./root/write.html" target = "view">write</a>
+        </div>
+            <?
+       }
+?>
+        <iframe src="./root/list.html" class="contents" name="view" target="_blank">
+        </iframe>
+    </div>
+<?php
+ include("./footer.html");
+ ?>
+</body>
+</html>
